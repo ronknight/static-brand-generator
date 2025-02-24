@@ -15,8 +15,8 @@ def generate_popular_html():
     with open('BrandList.csv', 'r') as f:
         reader = csv.DictReader(f)
         for row in reader:
-            # Only include brands that have a Popular-Rating and are Active
-            if row['Popular-Rating'] and row['Active'].upper() == 'TRUE':
+            # Only include brands with a Popular-Rating value > 0 and that are Active
+            if row.get('Popular-Rating', '').strip() and int(row['Popular-Rating']) > 0 and row.get('Active', '').upper() == 'TRUE':
                 brands.append(row)
     
     brands.sort(key=lambda x: int(x['Popular-Rating']))
@@ -32,7 +32,7 @@ def generate_popular_html():
             if logo.startswith("http"):
                 logo_url = logo
             else:
-                logo_url = f"https://www.4sgm.com/assets/Image/Category/{logo}"
+                logo_url = f"{brand['Image_URL']}{logo}"
             html.append(f'''    <a href="{final_url}">
     <img src="{logo_url}" alt="Wholesale {brand['BrandName']}" class="brand-logo">
 </a>''')
