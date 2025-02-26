@@ -32,9 +32,12 @@ def generate_popular_html():
             if logo.startswith("http"):
                 logo_url = logo
             else:
-                logo_url = f"{brand['Image_URL']}{logo}"
+                image_url = brand.get('Image_URL', '').strip()
+                logo_url = f"{image_url}{logo}"
             html.append(f'''    <a href="{final_url}">
     <img src="{logo_url}" alt="Wholesale {brand['BrandName']}" class="brand-logo">
+        <p class="brand-name">{brand['BrandName']}</p>
+
 </a>''')
         else:
             html.append(f'''    <a href="{final_url}">
