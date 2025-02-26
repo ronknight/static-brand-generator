@@ -1,6 +1,10 @@
 import csv
 import re
 from collections import defaultdict
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
 
 def slugify(text):
     # Convert to lowercase and replace special chars with hyphens
@@ -17,45 +21,42 @@ def build_url(url, brand_slug):
     else:
         return f"{url}&utm_source=webjaguar&utm_medium=website&utm_campaign=brands-page&utm_content={brand_slug}-link"
 
-def generate_popular_html():
-    # Read and sort brands by Popular-Rating
-    popular_brands = []
-    with open('BrandList.csv', 'r') as f:
-        reader = csv.DictReader(f)
-        for row in reader:
-            # Only include brands with rating AND Active = TRUE
-            if row['Popular-Rating'] and row['Active'].upper() == 'TRUE':
-                row['Popular-Rating'] = int(row['Popular-Rating'])
-                popular_brands.append(row)
-    
-    # Sort by Popular-Rating
-    popular_brands.sort(key=lambda x: x['Popular-Rating'])
-    
-    # Generate popular.html
-    html = ['<div class="popular-characters">']
-    
-    for brand in popular_brands:
-        brand_slug = slugify(brand['BrandName'])
-        final_url = build_url(brand['URL'], brand_slug)
-        html.append(f'''    <a href="{final_url}">
-        <span class="tag {brand_slug}">{brand['BrandName']}</span>
-    </a>''')
-    
-    html.append('</div>')
-    
-    with open('popular.html', 'w') as f:
-        f.write('\n'.join(html))
 
 def generate_brands_html():
     # Group brands by first letter
     letter_groups = defaultdict(list)
-    
-    with open('BrandList.csv', 'r') as f:
-        reader = csv.DictReader(f)
+
+    # Read statistics data
+    statistics_data = {}
+    with open(os.getenv('STATISTICS_FILE'), 'r') as f:
+        reader = csv.DictReader(f, delimiter='\t')
         for row in reader:
+            try:
+                statistics_data[row['Name']] = {
+                    'ItemCount': row['ItemCount'],
+                    'TotalQtyOnHand': row['TotalQtyOnHand']
+                }
+            except KeyError as e:
+                print(f"Error reading statistics data: {e}")
+                print(f"Row contents: {row}")
+    
+    with open(os.getenv('DATA_FILE'), 'r') as f:
+        reader = csv.DictReader(f)
+        skip_brands = [brand.strip().lower() for brand in os.getenv('SKIP_BRANDS').split(',')]
+        for row in reader:
+            brand_name = row['BrandName']
+            if brand_name.lower() in skip_brands:
+                continue
+
             if row['Active'].upper() == 'TRUE':
-                first_letter = get_first_letter(row['BrandName'])
-                letter_groups[first_letter].append(row)
+                # Update Active and TotalQtyOnHand from statistics data
+                if brand_name in statistics_data:
+                    row['Number_of_Items'] = statistics_data[brand_name]['ItemCount']
+                    total_qty_on_hand = statistics_data[brand_name]['TotalQtyOnHand'].replace(',', '')
+                    if int(float(total_qty_on_hand)) >= 100:
+                        row['Active'] = str(int(float(total_qty_on_hand) > 0))  # Convert to "0" or "1" string
+                        first_letter = get_first_letter(brand_name)
+                        letter_groups[first_letter].append(row)
     
     html = ['''<div class="container">
     <!-- Masonry Grid -->
