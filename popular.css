@@ -11,49 +11,13 @@
 }
 
 
-.tag.flomo {
-  background-color: #dc39e8;
+.tag.way-to-celebrate {
+  background-color: #fa2a75;
   color: #FFFFFF;
 }
 
-.item.flomo {
-  border-left-color: #dc39e8;
-}
-
-.tag.wizard {
-  background-color: #d8d3a0;
-  color: #000000;
-}
-
-.item.wizard {
-  border-left-color: #d8d3a0;
-}
-
-.tag.cooking-basics {
-  background-color: #87CEEB;
-  color: #000000;
-}
-
-.item.cooking-basics {
-  border-left-color: #87CEEB;
-}
-
-.tag.sanrio {
-  background-color: #FA8072;
-  color: #000000;
-}
-
-.item.sanrio {
-  border-left-color: #FA8072;
-}
-
-.tag.cut-n-sew {
-  background-color: #f2221b;
-  color: #FFFFFF;
-}
-
-.item.cut-n-sew {
-  border-left-color: #f2221b;
+.item.way-to-celebrate {
+  border-left-color: #fa2a75;
 }
 
 .tag.kodak {
@@ -65,6 +29,24 @@
   border-left-color: #FFD700;
 }
 
+.tag.l-a-colors {
+  background-color: #FF69B4;
+  color: #000000;
+}
+
+.item.l-a-colors {
+  border-left-color: #FF69B4;
+}
+
+.tag.wizard {
+  background-color: #d8d3a0;
+  color: #000000;
+}
+
+.item.wizard {
+  border-left-color: #d8d3a0;
+}
+
 .tag.pic {
   background-color: #ed0963;
   color: #FFFFFF;
@@ -74,22 +56,22 @@
   border-left-color: #ed0963;
 }
 
-.tag.way-to-celebrate {
-  background-color: #fa2a75;
+.tag.flomo {
+  background-color: #dc39e8;
   color: #FFFFFF;
 }
 
-.item.way-to-celebrate {
-  border-left-color: #fa2a75;
+.item.flomo {
+  border-left-color: #dc39e8;
 }
 
-.tag.threads-notions {
-  background-color: #d3bb91;
-  color: #000000;
+.tag.cut-n-sew {
+  background-color: #f2221b;
+  color: #FFFFFF;
 }
 
-.item.threads-notions {
-  border-left-color: #d3bb91;
+.item.cut-n-sew {
+  border-left-color: #f2221b;
 }
 
 .tag.tape-it {
@@ -101,13 +83,31 @@
   border-left-color: #fa6267;
 }
 
-.tag.l-a-colors {
-  background-color: #FF69B4;
+.tag.threads-notions {
+  background-color: #d3bb91;
   color: #000000;
 }
 
-.item.l-a-colors {
-  border-left-color: #FF69B4;
+.item.threads-notions {
+  border-left-color: #d3bb91;
+}
+
+.tag.sanrio {
+  background-color: #FA8072;
+  color: #000000;
+}
+
+.item.sanrio {
+  border-left-color: #FA8072;
+}
+
+.tag.cooking-basics {
+  background-color: #87CEEB;
+  color: #000000;
+}
+
+.item.cooking-basics {
+  border-left-color: #87CEEB;
 }
 
 .tag.exotica {
