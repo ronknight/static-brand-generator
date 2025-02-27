@@ -1,0 +1,120 @@
+/* popular.css */
+
+.popular-brands-tag {
+  font-size: 1.2em;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.popular-brands-item {
+  margin-bottom: 5px;
+}
+
+
+.tag.flomo {
+  background-color: #dc39e8;
+  color: #FFFFFF;
+}
+
+.item.flomo {
+  border-left-color: #dc39e8;
+}
+
+.tag.wizard {
+  background-color: #d8d3a0;
+  color: #000000;
+}
+
+.item.wizard {
+  border-left-color: #d8d3a0;
+}
+
+.tag.cooking-basics {
+  background-color: #87CEEB;
+  color: #000000;
+}
+
+.item.cooking-basics {
+  border-left-color: #87CEEB;
+}
+
+.tag.sanrio {
+  background-color: #FA8072;
+  color: #000000;
+}
+
+.item.sanrio {
+  border-left-color: #FA8072;
+}
+
+.tag.cut-n-sew {
+  background-color: #f2221b;
+  color: #FFFFFF;
+}
+
+.item.cut-n-sew {
+  border-left-color: #f2221b;
+}
+
+.tag.kodak {
+  background-color: #FFD700;
+  color: #000000;
+}
+
+.item.kodak {
+  border-left-color: #FFD700;
+}
+
+.tag.pic {
+  background-color: #ed0963;
+  color: #FFFFFF;
+}
+
+.item.pic {
+  border-left-color: #ed0963;
+}
+
+.tag.way-to-celebrate {
+  background-color: #fa2a75;
+  color: #FFFFFF;
+}
+
+.item.way-to-celebrate {
+  border-left-color: #fa2a75;
+}
+
+.tag.threads-notions {
+  background-color: #d3bb91;
+  color: #000000;
+}
+
+.item.threads-notions {
+  border-left-color: #d3bb91;
+}
+
+.tag.tape-it {
+  background-color: #fa6267;
+  color: #000000;
+}
+
+.item.tape-it {
+  border-left-color: #fa6267;
+}
+
+.tag.l-a-colors {
+  background-color: #FF69B4;
+  color: #000000;
+}
+
+.item.l-a-colors {
+  border-left-color: #FF69B4;
+}
+
+.tag.exotica {
+  background-color: #ee3a3d;
+  color: #FFFFFF;
+}
+
+.item.exotica {
+  border-left-color: #ee3a3d;
+}
