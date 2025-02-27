@@ -1,6 +1,6 @@
 <h1 align="center">🚀 <a href="https://github.com/ronknight/static-brand-html-generator">Static Brand HTML Generator</a></h1>
 
-<h4 align="center">🔧 A Python-powered static site generator that organizes brand data and presents it in a structured HTML format.</h4>
+<h4 align="center">🔧 A Python-powered static site generator for brand catalogs</h4>
 
 <p align="center">
   <a href="https://twitter.com/PinoyITSolution"><img src="https://img.shields.io/twitter/follow/PinoyITSolution?style=social"></a>
@@ -14,66 +14,58 @@
 </p>
 
 ## 📌 Overview
-The **Static Brand HTML Generator** is a Python-based tool that creates brand listing pages using data from CSV files and statistics. It categorizes brands alphabetically and by popularity, generating corresponding HTML files with logos and styling.
+Generates static HTML pages for brand catalogs with automated sorting and styling.
 
 ## 📂 Project Structure
 ```
 static-brand-html-generator/
-├── .env                      # Environment variables configuration
-├── generate-brands.py        # Script to generate brands.html
-├── generate_popular_new.py   # Script to generate popular.html
-├── generate_popular_css.py   # Script to generate CSS for popular brands
-├── brands.html              # Generated alphabetical list of brands
-├── popular.html             # Generated list of popular brands
-├── popular.css             # Generated CSS styles for popular brands
-└── README.md               # Project documentation
+├── .env                      # Configuration
+├── generate-brands.py        # Main generator
+├── generate_popular_new.py   # Popular brands generator
+├── generate_popular_css.py   # CSS generator
+├── brands.html              # Output file
+├── popular.html             # Output file
+├── popular.css             # Output file
+└── README.md               # Documentation
 ```
 
 ## 🔧 Environment Variables
-The `.env` file should contain:
-```
-DATA_FILE=path/to/brandlist.csv
-STATISTICS_FILE=path/to/statistics.tsv
+```ini
+DATA_FILE=path/to/source.csv
+STATISTICS_FILE=path/to/stats.tsv
 SKIP_BRANDS=brand1,brand2,brand3
 ```
 
 ## 📊 Data Structure
-The data files should contain:
 
-**BrandList CSV:**
-- BrandName: Brand name
-- URL: Brand URL
-- Popular-Rating: Priority rating (1-n)
-- Active: Status (TRUE/FALSE)
-- LogoName: Logo filename
-- Image_URL: Base URL for logos
+**Source CSV:**
+- BrandName
+- URL
+- Popular-Rating (1-n)
+- Active (TRUE/FALSE)
+- LogoName
+- Image_URL
 
-**Statistics TSV:**
-- Name: Brand name
-- ItemCount: Number of items
-- TotalQtyOnHand: Total inventory quantity
+**Stats TSV:**
+- Name
+- ItemCount
+- TotalQtyOnHand
 
 ## 🚀 Features
-- 📌 **Smart Brand Sorting**: Combines popularity ratings with inventory data
-- 🎯 **Priority System**: Uses Popular-Rating to determine brand display order
-- 📊 **Inventory Integration**: Considers TotalQtyOnHand for brand relevance
-- 🖼️ **Logo Management**: Supports both local and remote logo URLs
-- 🎨 **Dynamic CSS**: Generates brand-specific styling
+- 📌 Smart brand sorting
+- 🎯 Priority rating system
+- 📊 Inventory integration
+- 🖼️ Logo management
+- 🎨 Dynamic CSS generation
 
 ## 🔧 Installation
-1. Clone the repository:
-   ```sh
-   git clone https://github.com/ronknight/static-brand-html-generator.git
-   cd static-brand-html-generator
-   ```
-2. Create and configure `.env` file
-3. Install dependencies:
-   ```sh
-   pip install python-dotenv
-   ```
+```sh
+git clone https://github.com/ronknight/static-brand-html-generator.git
+cd static-brand-html-generator
+pip install python-dotenv
+```
 
 ## 📌 Usage
-Run the scripts in order:
 ```sh
 python generate-brands.py
 python generate_popular_new.py
@@ -81,17 +73,18 @@ python generate_popular_css.py
 ```
 
 ## 🔍 Brand Selection Logic
-1. Brands with Popular-Rating are sorted first (ascending order)
-2. Remaining brands are sorted by TotalQtyOnHand (descending)
-3. Minimum inventory threshold of 100 items required
-4. Limited to top 50 brands total
+1. Popular-Rating sorting (ascending)
+2. Inventory quantity sorting (descending)
+3. Minimum threshold: 100 items
+4. Maximum brands: 50
 
 ## ⚠️ Disclaimer
-This project processes proprietary brand data. Ensure proper data handling and privacy compliance.
+Handles proprietary data - follow data protection guidelines.
 
 ## 📜 License
-MIT License - see [LICENSE](LICENSE)
+MIT License
 
 ---
 <h4 align="center">💡 Made with ❤️ by <a href="https://github.com/ronknight">Ron Knight</a></h4>
+````
 
