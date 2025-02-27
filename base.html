@@ -1,0 +1,400 @@
+<!--Insert Start-->
+<link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Open+Sans:wght@400;600&family=Poppins:wght@400;600&display=swap"
+        rel="stylesheet" />
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/masonry/4.2.2/masonry.pkgd.min.js"></script>
+<style>
+        body {font-family:"Open Sans",sans-serif;font-size:16px;margin:0;padding:20px;background-color:#fff;color:#333;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen,Ubuntu,Cantarell,sans-serif;}
+        h1,h2 {font-family:"Montserrat",sans-serif;font-weight:bold;margin-bottom:30px;text-align:center;}
+        h1 {color:#333;font-size:1.8em;}
+        h2 {margin-top:0;font-size:1.5em;}
+        h3 {margin-top:25px;font-size:1.5em;}
+        h4 {margin-top:0;color:#e50914!important;font-size:24px;margin-bottom:30px;}
+        .masonry-item {margin-bottom:20px;border:1px solid #ddd;padding:15px;background-color:#f8f8f8;border-radius:5px;box-shadow:0 0 5px rgba(0,0,0,.2);}
+        .masonry-item:hover {border-left:4px solid #212121;background:#fff;}
+        .tag {font-family:"Poppins",sans-serif;font-weight:600;}
+        .tags-wrapper {width:100%;display:flex;justify-content:center;padding:20px 0;margin-bottom:20px;}
+        .tags-wrapper2 {display:flex;align-items:center;justify-content:center;width:90%;max-width:1200px;margin:0 auto;}
+        .tags-container {display:flex;flex-wrap:wrap;gap:15px;justify-content:center;width:90%;max-width:1200px;}
+        .tag {color:#fff;padding:8px 0;font-size:14px;font-weight:bold;cursor:pointer;border-radius:20px;transition:background-color .3s,color .3s;width:120px;height:40px;display:flex;align-items:center;justify-content:center;text-align:center;}
+        .tag.mickey-mouse-and-friends {width:auto;padding:8px 20px;}
+        .tag.licensed-character {width:auto;padding:8px 20px;}
+        .tag:hover {opacity:0.8;}
+        .alphabet-nav {display:flex;justify-content:center;gap:4px;margin-bottom:30px;padding:10px;background:#f8f9fa;border-radius:8px;position:sticky;top:0;z-index:100;flex-wrap:wrap;}
+        .alphabet-nav a {color:#077a5b;text-decoration:none;padding:5px 10px;transition:all .2s;border-radius:4px;min-width:20px;text-align:center;font-weight:bold;}
+        .alphabet-nav a:hover {background:#e50914;color:#fff;}
+        .content-grid {display:grid;grid-template-columns:repeat(4,1fr);gap:20px;}
+        .category-section {background:#f8f9fa;border-radius:8px;padding:10px 15px;box-shadow:0 2px 4px rgba(0,0,0,.05);display:flex;flex-direction:column;min-height:auto!important;}
+        .category-section:has(.item:only-child) {padding:5px;height:auto!important;width:auto!important;}
+        .item:only-child {padding:4px 8px;color:#666;font-style:italic;background:#eee;border-radius:4px;width:auto!important;height:auto!important;}
+        .items-container {display:flex;flex-direction:column;gap:10px;}
+        .item {padding:15px;background:#eee;border-radius:8px;border:1px solid #ddd;color:#333;transition:all .2s ease;}
+        .item:hover {transform:scale(1.05);box-shadow:0 4px 8px rgba(0,0,0,.2);}
+        /* Item Declaration Start*/
+        .item.hello-kitty,.item.mr-handy,.item.simply-home,.item.kitchen-co,.item.bath-house,.item.toolbox,.item.marvel,.item.all-pure,.item.mercury,.item.sterilite,.item.it-s-just-fun,.item.dc-comics,.item.glamafied,.item.party-world,.item.disney-princess,.item.puppy-love,.item.nickelodeon,.item.la-s-totally-awesome,.item.vision-st,.item.star-wars,.item.gibson,.item.sure-lox,.item.clorox,.item.the-jigsaw-puzzle-factory,.item.lol-surprise,.item.match-box,.item.sophi-essentials,.item.crayola,.item.bendon,.item.ebba,.item.wham-o,.item.dorco,.item.titiz,.item.zak-zoey,.item.wanna-bubbles,.item.pac-it-fresh,.item.super-aid,.item.mega-x-crew,.item.aurora,.item.profession,.item.toy-story,.item.essex-beauty,.item.bestway,.item.kitchen-helper,.item.panasonic,.item.home-trendz,.item.destination-nation-boutique,.item.colgate {color:#000;font-weight:bold;border-left:4px solid;}
+        .item.hello-kitty,.item.disney-princess,.item.aurora,.item.destination-nation-boutique {border-left-color:#ff69b4;background:rgba(255,105,180,0.2);}
+        .item.mr-handy {border-left-color:#808080;background:rgba(128,128,128,0.2);}
+        .item.simply-home {border-left-color:#6b8e23;background:rgba(107,142,35,0.2);}
+        .item.kitchen-co,.item.super-aid {border-left-color:#ffa07a;background:rgba(255,160,122,0.2);}
+        .item.bath-house {border-left-color:#5d4037;background:rgba(93,64,55,0.2);}
+        .item.toolbox {border-left-color:#dc143c;background:rgba(220,20,60,0.2);}
+        .item.marvel {border-left-color:#d32f2f;background:rgba(211,47,47,0.2);}
+        .item.all-pure {border-left-color:#008080;background:rgba(0,128,128,0.2);}
+        .item.mercury {border-left-color:#708090;background:rgba(112,128,144,0.2);}
+        .item.sterilite,.item.dorco {border-left-color:#4682b4;background:rgba(70,130,180,0.2);}
+        .item.it-s-just-fun,.item.match-box {border-left-color:#ff8c00;background:rgba(255,140,0,0.2);}
+        .item.dc-comics {border-left-color:#000080;background:rgba(0,0,128,0.2);}
+        .item.glamafied {border-left-color:#9932cc;background:rgba(153,50,204,0.2);}
+        .item.party-world,.item.sure-lox {border-left-color:#ff4500;background:rgba(255,69,0,0.2);}
+        .item.puppy-love {border-left-color:#ffb6c1;background:rgba(255,182,193,0.2);}
+        .item.nickelodeon,.item.toy-story {border-left-color:#ffa500;background:rgba(255,165,0,0.2);}
+        .item.la-s-totally-awesome {border-left-color:#00ced1;background:rgba(0,206,209,0.2);}
+        .item.vision-st {border-left-color:#00fa9a;background:rgba(0,250,154,0.2);}
+        .item.star-wars,.item.gibson {border-left-color:#000;background:rgba(0,0,0,0.2);}
+        .item.clorox {border-left-color:#ff0000;background:rgba(255,0,0,0.2);}
+        .item.the-jigsaw-puzzle-factory,.item.crayola {border-left-color:#ffd700;background:rgba(255,215,0,0.2);}
+        .item.lol-surprise {border-left-color:#ff1493;background:rgba(255,20,147,0.2);}
+        .item.sophi-essentials {border-left-color:#20b2aa;background:rgba(32,178,170,0.2);}
+        .item.bendon {border-left-color:#8b4513;background:rgba(139,69,19,0.2);}
+        .item.ebba,.item.titiz {border-left-color:#32cd32;background:rgba(50,205,50,0.2);}
+        .item.wham-o {border-left-color:#1e90ff;background:rgba(30,144,255,0.2);}
+        .item.zak-zoey {border-left-color:#ffdab9;background:rgba(255,218,185,0.2);}
+        .item.wanna-bubbles {border-left-color:#00bfff;background:rgba(0,191,255,0.2);}
+        .item.pac-it-fresh {border-left-color:#00ff7f;background:rgba(0,255,127,0.2);}
+        .item.mega-x-crew,.item.bestway {border-left-color:#0000ff;background:rgba(0,0,255,0.2);}
+        .item.profession {border-left-color:#5f9ea0;background:rgba(95,158,160,0.2);}
+        .item.essex-beauty {border-left-color:#9370db;background:rgba(147,112,219,0.2);}
+        .item.kitchen-helper {border-left-color:#ff6347;background:rgba(255,99,71,0.2);}
+        .item.panasonic {border-left-color:#0047ab;background:rgba(0,71,171,0.2);}
+        .item.home-trendz {border-left-color:#8b0000;background:rgba(139,0,0,0.2);}
+        .item.colgate {border-left-color:#e41e26;background:rgba(228,30,38,0.2);}
+        /* Item Declaration End*/
+        /* Tag Declaration Start*/
+        .tag.hello-kitty,.tag.kitchen-co,.tag.it-s-just-fun,.tag.party-world,.tag.disney-princess,.tag.puppy-love,.tag.nickelodeon,.tag.la-s-totally-awesome,.tag.vision-st,.tag.sure-lox,.tag.the-jigsaw-puzzle-factory,.tag.match-box,.tag.sophi-essentials,.tag.crayola,.tag.ebba,.tag.titiz,.tag.zak-zoey,.tag.pac-it-fresh,.tag.super-aid,.tag.aurora,.tag.toy-story,.tag.destination-nation-boutique {color:#000;}
+        .tag.mr-handy,.tag.simply-home,.tag.bath-house,.tag.toolbox,.tag.marvel,.tag.all-pure,.tag.mercury,.tag.sterilite,.tag.dc-comics,.tag.glamafied,.tag.star-wars,.tag.gibson,.tag.clorox,.tag.lol-surprise,.tag.bendon,.tag.wham-o,.tag.dorco,.tag.wanna-bubbles,.tag.mega-x-crew,.tag.profusion,.tag.essex-beauty,.tag.bestway,.tag.kitchen-helper,.tag.panasonic,.tag.home-trendz,.tag.colgate,.tag.licensed-character {color:#fff;}
+        .tag.hello-kitty,.tag.disney-princess,.tag.aurora {background-color:#ff69b4;}
+        .tag.destination-nation-boutique {background-color:#ff69b4;padding:8px 20px;width:auto;}
+        .tag.mr-handy {background-color:#808080;}
+        .tag.simply-home {background-color:#6b8e23;}
+        .tag.kitchen-co,.tag.super-aid {background-color:#ffa07a;}
+        .tag.bath-house {background-color:#5d4037;}
+        .tag.toolbox {background-color:#dc143c;}
+        .tag.marvel {background-color:#d32f2f;}
+        .tag.all-pure {background-color:#008080;}
+        .tag.mercury {background-color:#708090;}
+        .tag.sterilite,.tag.dorco {background-color:#4682b4;}
+        .tag.it-s-just-fun,.tag.match-box {background-color:#ff8c00;}
+        .tag.dc-comics {background-color:#000080;}
+        .tag.glamafied {background-color:#9932cc;}
+        .tag.party-world,.tag.sure-lox {background-color:#ff4500;}
+        .tag.puppy-love {background-color:#ffb6c1;}
+        .tag.nickelodeon,.tag.toy-story {background-color:#ffa500;}
+        .tag.la-s-totally-awesome {background-color:#00ced1;padding:8px 20px;width:auto;}
+        .tag.vision-st {background-color:#00fa9a;}
+        .tag.star-wars,.tag.gibson {background-color:#000000;}
+        .tag.clorox {background-color:#ff0000;}
+        .tag.the-jigsaw-puzzle-factory,.tag.crayola {background-color:#ffd700;padding:8px 20px;width:auto;}
+        .tag.lol-surprise {background-color:#ff1493;}
+        .tag.sophi-essentials {background-color:#20b2aa;}
+        .tag.bendon {background-color:#8b4513;}
+        .tag.ebba,.tag.titiz {background-color:#32cd32;}
+        .tag.wham-o {background-color:#1e90ff;}
+        .tag.zak-zoey {background-color:#ffdab9;}
+        .tag.wanna-bubbles {background-color:#00bfff;}
+        .tag.pac-it-fresh {background-color:#00ff7f;}
+        .tag.mega-x-crew,.tag.bestway {background-color:#0000ff;}
+        .tag.profusion {background-color:#5f9ea0;}
+        .tag.essex-beauty {background-color:#9370db;}
+        .tag.kitchen-helper {background-color:#ff6347;}
+        .tag.panasonic {background-color:#0047ab;}
+        .tag.home-trendz {background-color:#8b0000;}
+        .tag.colgate {background-color:#e41e26;}
+        .tag.licensed-character {background-color:#e41e26;}
+        /* Tag Declaration End*/
+        .popular-characters {display:flex;flex-wrap:wrap;align-items:center;gap:15px;justify-content:center;}
+        .brand-link {display:flex;align-items:center;justify-content:center;}
+        .brand-logo {width:150px !important;display:block;height:auto;}
+        .brand-name {font-size: 16px;margin-top: 10px; text-align: center;text-decoration:none;}
+        .highlight {background-color:#f9f9f9;border-left:4px solid #333;padding:15px;margin-bottom:20px;font-family:Arial,sans-serif;font-size:16px;line-height:1.6;color:#333;}
+        #styled-segment {font-family:Arial,sans-serif;line-height:1.6;}
+        #styled-segment .container {width:80%;margin:0 auto;padding:20px;text-align:left;background-color:#fff;}
+        #styled-segment h1 {color:#2c3e50;font-weight:400;}
+        #styled-segment p {max-width:1000px;margin:auto;font-size:16px;line-height:1.6;}
+        #styled-segment ul {list-style:none;padding:0;}
+        #styled-segment ul li {background:#e8f4fc;margin:10px 0;padding:15px;border-radius:5px;border:1px solid #d0e9f9;display:flex;flex-direction:column;gap:10px;}
+        #styled-segment ul li div {display:flex;align-items:center;}
+        #styled-segment ul li span {display:inline-block;margin-right:5px;}
+        #styled-segment ul li strong {margin-right:10px;}
+        @media (max-width:768px){#styled-segment .container {width:90%;padding:10px;}}
+        @media (max-width:768px){#styled-segment ul li {padding:12px;}}
+        @media (max-width:768px){#styled-segment .highlight {padding:5px;margin-bottom:10px;}}
+        @media (width:1920px) and (height:1080px){#styled-segment .container {width:80%;padding:30px;}}
+        @media (width:1920px) and (height:1080px){#styled-segment ul li {padding:18px;}}
+        @media (width:1920px) and (height:1080px){#styled-segment .highlight {padding:15px;margin-bottom:25px;}}
+        @media (width:1920px) and (height:1080px){#styled-segment h1,#styled-segment h2 {font-size:2rem;}}
+        @media (width:1920px) and (height:1080px){#styled-segment ul {padding-left:25px;}}
+        #masonry-grid {width:100%;margin:0 auto;}
+        .masonry-item {width:270px;margin-bottom:20px;border:1px solid #ddd;padding:15px;background-color:#f8f8f8;border-radius:5px;box-shadow:0 0 5px rgba(0,0,0,.2);}
+        @media (max-width:992px){.masonry-item {width:calc(33.333% - 20px);}}
+        @media (max-width:768px){.masonry-item {width:calc(50% - 20px);}}
+        @media (max-width:576px){.masonry-item {width:calc(100% - 20px);}}
+        .container {max-width:1200px;margin:0 auto;padding:0 15px;}
+    </style>
+    <link rel="stylesheet" href="popular.css">
+<!-- Introductory Banner -->
+        <div id="styled-segment">
+            <div class="container">
+                <h1><strong>Choose Brand-Name Products for Your Store</strong></h1>
+                <p style="
+            max-width: 1000px;
+            margin: auto;
+            font-size: 16px;
+            line-height: 1.6;
+          ">
+                    Boost your retail store's success with
+                    <strong><span style="color: red">4sgm</span>'s wholesale consumer product
+                        brands</strong>. From trusted household essentials to exciting lifestyle products,
+                    our offerings cater to diverse customer needs, driving customer
+                    satisfaction and business growth.
+                </p>
+                <p style="
+            max-width: 1000px;
+            margin: auto;
+            font-size: 16px;
+            line-height: 1.6;
+          ">&nbsp;
+                    
+                </p>
+                <p style="
+            max-width: 1000px;
+            margin: auto;
+            font-size: 16px;
+            line-height: 1.6;
+          ">
+                    Stocking trusted brand-name products in your retail store is a
+                    surefire way to attract customers, build trust, and grow your
+                    business. Here are the key benefits: &nbsp;
+                </p>
+                <ul>
+                    <li>
+                        <div><span>&#9989;</span><strong>Customer Trust:</strong></div>
+                        Brand-name products inspire instant confidence and reliability,
+                        making your store a trusted destination.
+                    </li>
+                    <li>
+                        <div><span>&#9989;</span><strong>Higher Sales:</strong></div>
+                        Recognizable brands sell faster, ensuring quick inventory turnover
+                        and increased profitability.
+                    </li>
+                    <li>
+                        <div><span>&#9989;</span><strong>Premium Quality:</strong></div>
+                        Provide the high-quality products your customers expect, boosting
+                        satisfaction and loyalty.
+                    </li>
+                    <li>
+                        <div><span>&#9989;</span><strong>Competitive Edge:</strong></div>
+                        Stand out from competitors by offering popular, in-demand products
+                        that customers seek.
+                    </li>
+                    <li>
+                        <div>
+                            <span>&#9989;</span><strong>Increased Foot Traffic:</strong>
+                        </div>
+                        Attract more shoppers to your store with products they already know
+                        and love.
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="container">
+            <div align="center" style="font-weight: bold; font-size: 24px; margin-bottom: 20px">
+                Benefits of Selling Consumer Product Merchandise
+            </div>
+
+            <div class="highlight">
+                <h3>Specific Categories</h3>
+                <ul>
+                    <li>
+                        <strong>Housewares:</strong> Quality kitchen tools, storage
+                        solutions, and cleaning essentials enhance any home.
+                    </li>
+                    <li>
+                        <strong>Personal Care:</strong> Trusted hygiene and beauty products
+                        that foster brand loyalty.
+                    </li>
+                    <li>
+                        <strong>Toys &amp; Entertainment:</strong> Fun games, puzzles, and
+                        outdoor activities for all ages.
+                    </li>
+                    <li>
+                        <strong>Seasonal &amp; Party Supplies:</strong> Must-haves for
+                        celebrations, gifting, and themed events.
+                    </li>
+                </ul>
+            </div>
+
+            <div class="highlight">
+                <h3>Target Customer Types</h3>
+                <ul>
+                    <li>
+                        <strong>Homeowners:</strong> Practical and stylish solutions for
+                        everyday living.
+                    </li>
+                    <li>
+                        <strong>Parents &amp; Families:</strong> Safe, engaging, and
+                        educational products for kids.
+                    </li>
+                    <li>
+                        <strong>DIY Enthusiasts:</strong> Dependable tools for home
+                        improvement projects.
+                    </li>
+                    <li>
+                        <strong>Gift Shoppers:</strong> Perfect for birthdays, holidays, and
+                        other special occasions.
+                    </li>
+                </ul>
+            </div>
+
+            <div class="highlight">
+                <h3>Seasonal and Event-Driven Products</h3>
+                <ul>
+                    <li>
+                        <strong>Spring Cleaning:</strong> Stock up on cleaning solutions
+                        like <em>All Pure</em> and <em>LA's Totally Awesome</em>.
+                    </li>
+                    <li>
+                        <strong>Back-to-School:</strong> Organize with
+                        <em>Sterilite</em> storage and fun supplies from
+                        <em>Crayola</em> and <em>Bendon</em>.
+                    </li>
+                    <li>
+                        <strong>Holiday Season:</strong> Unique gifts like puzzles from
+                        <em>The Jigsaw Puzzle Factory</em> and decor from
+                        <em>Simply Home</em>.
+                    </li>
+                    <li>
+                        <strong>Summer Fun:</strong> Entertain with <em>Wham-O</em> toys and
+                        <em>Wanna Bubbles</em> products.
+                    </li>
+                </ul>
+            </div>
+            <div align="center" style="font-weight: bold; font-size: 24px">
+                Additional Benefits
+            </div>
+            <ul>
+                <li>
+                    <strong>Brand Loyalty:</strong> Customers trust recognized brands,
+                    increasing repeat purchases.
+                </li>
+                <li>
+                    <strong>Cross-Promotion:</strong> Bundle complementary products for
+                    added value, like pet toys with cleaning solutions.
+                </li>
+                <li>
+                    <strong>Impulse Buys:</strong> Strategically position small items near
+                    checkout to boost sales.
+                </li>
+                <li>
+                    <strong>Event Promotions:</strong> Offer themed bundles for birthdays,
+                    holidays, and seasonal events.
+                </li>
+            </ul>
+
+            <p style="font-size: 16px; line-height: 1.6; text-align: center">
+                Position your store as the leading destination for
+                <strong>trusted wholesale consumer products</strong>. Stock versatile
+                and high-demand items that ensure customer satisfaction and drive
+                year-round growth.
+            </p>
+        </div>
+
+        <!-- Updated Popular Brands Section -->
+        <div class="tags-wrapper">
+            <div class="tags-container">
+                <h2>Popular Brands Available for Wholesale</h2>
+                <div class="popular-characters" id="popular-brands">
+                    <!-- Popular brands will be dynamically loaded here -->
+                </div>
+            </div>
+        </div>
+
+        <h2>All Brands for Retailers</h2>
+        <div class="alphabet-nav">
+            <a
+                href="?utm_source=webjaguar&utm_medium=website&utm_campaign=brands-page&utm_content=hashtag-link#">#</a><a
+                href="?utm_source=webjaguar&utm_medium=website&utm_campaign=brands-page&utm_content=a-link#A">A</a><a
+                href="?utm_source=webjaguar&utm_medium=website&utm_campaign=brands-page&utm_content=b-link#B">B</a><a
+                href="?utm_source=webjaguar&utm_medium=website&utm_campaign=brands-page&utm_content=c-link#C">C</a><a
+                href="?utm_source=webjaguar&utm_medium=website&utm_campaign=brands-page&utm_content=d-link#D">D</a><a
+                href="?utm_source=webjaguar&utm_medium=website&utm_campaign=brands-page&utm_content=e-link#E">E</a><a
+                href="?utm_source=webjaguar&utm_medium=website&utm_campaign=brands-page&utm_content=f-link#F">F</a><a
+                href="?utm_source=webjaguar&utm_medium=website&utm_campaign=brands-page&utm_content=g-link#G">G</a><a
+                href="?utm_source=webjaguar&utm_medium=website&utm_campaign=brands-page&utm_content=h-link#H">H</a><a
+                href="?utm_source=webjaguar&utm_medium=website&utm_campaign=brands-page&utm_content=i-link#I">I</a><a
+                href="?utm_source=webjaguar&utm_medium=website&utm_campaign=brands-page&utm_content=j-link#J">J</a><a
+                href="?utm_source=webjaguar&utm_medium=website&utm_campaign=brands-page&utm_content=k-link#K">K</a><a
+                href="?utm_source=webjaguar&utm_medium=website&utm_campaign=brands-page&utm_content=l-link#L">L</a><a
+                href="?utm_source=webjaguar&utm_medium=website&utm_campaign=brands-page&utm_content=m-link#M">M</a><a
+                href="?utm_source=webjaguar&utm_medium=website&utm_campaign=brands-page&utm_content=n-link#N">N</a><a
+                href="?utm_source=webjaguar&utm_medium=website&utm_campaign=brands-page&utm_content=o-link#O">O</a><a
+                href="?utm_source=webjaguar&utm_medium=website&utm_campaign=brands-page&utm_content=p-link#P">P</a><a
+                href="?utm_source=webjaguar&utm_medium=website&utm_campaign=brands-page&utm_content=q-link#Q">Q</a><a
+                href="?utm_source=webjaguar&utm_medium=website&utm_campaign=brands-page&utm_content=r-link#R">R</a><a
+                href="?utm_source=webjaguar&utm_medium=website&utm_campaign=brands-page&utm_content=s-link#S">S</a><a
+                href="?utm_source=webjaguar&utm_medium=website&utm_campaign=brands-page&utm_content=t-link#T">T</a><a
+                href="?utm_source=webjaguar&utm_medium=website&utm_campaign=brands-page&utm_content=u-link#U">U</a><a
+                href="?utm_source=webjaguar&utm_medium=website&utm_campaign=brands-page&utm_content=v-link#V">V</a><a
+                href="?utm_source=webjaguar&utm_medium=website&utm_campaign=brands-page&utm_content=w-link#W">W</a><a
+                href="?utm_source=webjaguar&utm_medium=website&utm_campaign=brands-page&utm_content=x-link#X">X</a><a
+                href="?utm_source=webjaguar&utm_medium=website&utm_campaign=brands-page&utm_content=y-link#Y">Y</a><a
+                href="?utm_source=webjaguar&utm_medium=website&utm_campaign=brands-page&utm_content=z-link#Z">Z</a>
+        </div>
+
+        <div class="container" id="brands-container">
+            <!-- Brands will be dynamically loaded here -->
+        </div>
+        <div id="styled-segment2">
+            <div class="container">
+                <div class="tags-wrapper2">
+                    <div class="tags-container2">
+                        <div class="popular-characters">
+                            <a
+                                href="https://www.4sgm.com/category/747/Licensed-Characters.html?utm_source=webjaguar&utm_medium=website&utm_campaign=brands-page&utm_content=licensed-character-link">
+                                <span class="tag licensed-character">Browse Licensed Character Merchandise</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <script>
+            $(document).ready(function() {
+                // Load popular brands dynamically
+                $("#popular-brands").load("popular.html?t=" + new Date().getTime());
+            
+                // Load main brand categories dynamically
+                $("#brands-container").load("brands.html", function() {
+                    var grid = document.querySelector('#masonry-grid');
+                    var masonry = new Masonry(grid, {
+                        itemSelector: '.masonry-item',
+                        gutter: 20,
+                        fitWidth: true,
+                        columnWidth: 270  // Fixed column width (270px) for a 4-column layout in a 1200px container
+                    });
+                });
+            });
+        </script>
+
+        <script>
+            // Accordion toggle script
+            document.querySelectorAll('.accordion h3').forEach(accordionHeader => {
+                accordionHeader.addEventListener('click', () => {
+                    const content = accordionHeader.nextElementSibling;
+                    content.style.display = content.style.display === 'block' ? 'none' : 'block';
+                });
+            });
+        </script>
