@@ -116,7 +116,17 @@ def generate_popular_html():
 </a>''')
     html.append('</div>')
 
+    popular_html = '\n'.join(html)
+    # Existing extraction for span-tag based brands
+    popular_brands_spans = set(re.findall(r'<span class="tag ([^" ]+)"', popular_html, flags=re.IGNORECASE))
+    # New extraction for brands with images: get brand names from <p class="brand-name">
+    brand_names = re.findall(r'<p class="brand-name">(.*?)</p>', popular_html, flags=re.IGNORECASE)
+    # Convert brand names to slugs using your slugify function
+    popular_brands_images = {slugify(name.strip()) for name in brand_names if name.strip() != ""}
+    # Combine both sets so all brands are included
+    popular_brands = popular_brands_spans.union(popular_brands_images)
+
     with open('popular.html', 'w') as f:
-        f.write('\n'.join(html))
+        f.write(popular_html)
 
 generate_popular_html()
