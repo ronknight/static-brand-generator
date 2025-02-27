@@ -24,8 +24,10 @@ def generate_css():
         return
 
     # Extract brand names from popular.html
-    popular_brands = set(re.findall(r'<span class="tag ([^"]+)">.*?</span>', popular_html))
-    
+    popular_brands_spans = set(re.findall(r'<span class="tag ([^"]+)">.*?</span>', popular_html))
+    popular_brands_images = set(re.findall(r'<p class="brand-name">(.*?)</p>', popular_html))
+    popular_brands = popular_brands_spans.union(popular_brands_images)
+
     # Instead of subtracting existing brands, update CSS for all reported brands
     new_brands = popular_brands
 
@@ -37,13 +39,41 @@ def generate_css():
 
     def get_brand_color(brand_name):
         if brand_name == "kodak":
-            return "#FFD700"  # Yellow
+            return "#FEEB00"  # Kodak Yellow
         elif brand_name == "l-a-colors":
-            return "#FF69B4"  # Pink
+            return "#DD2E44"  # LA Colors Red
         elif brand_name == "cooking-basics":
-            return "#87CEEB"  # Light Blue
+            return "#A7D1E7"  # Cooking Basics Light Blue
         elif brand_name == "sanrio":
-            return "#FA8072"  # Salmon
+            return "#EEA7C4"  # Sanrio Pink
+        elif brand_name == "nickelodeon":
+            return "#64B5F6" # Nickelodeon Blue
+        elif brand_name == "sterilite":
+            return "#3369E8" # Sterilite Blue
+        elif brand_name == "pro office":
+            return "#4CAF50" # Pro Office Green
+        elif brand_name == "little mimos":
+            return "#F06292" # Little Mimos Pink
+        elif brand_name == "dove":
+            return "#FFFFFF" # Dove White
+        elif brand_name == "bendon":
+            return "#FFCDD2" # Bendon Light Red
+        elif brand_name == "dorco":
+            return "#2196F3" # Dorco Blue
+        elif brand_name == "panasonic":
+            return "#003091" # Panasonic Blue
+        elif brand_name == "sesame street":
+            return "#F44336" # Sesame Street Red
+        elif brand_name == "energizer":
+            return "#FDD835" # Energizer Yellow
+        elif brand_name == "vaseline":
+            return "#D32F2F" # Vaseline Red
+        elif brand_name == "ambitex":
+            return "#7CB342" # Ambitex Green
+        elif brand_name == "lol surprise":
+            return "#FF4081" # LOL Surprise Pink
+        elif brand_name == "crayola":
+            return "#EF5350" # Crayola Red
         else:
             hash_object = hashlib.md5(brand_name.encode())
             hex_dig = hash_object.hexdigest()
@@ -89,6 +119,8 @@ def generate_css():
         print("popular.css generated successfully.")
     except Exception as e:
         print(f"Error writing to popular.css: {e}")
+
+    print(f"Popular brands: {popular_brands}")
 
     # --- Update dynamic CSS in base.html ---
     # Expect base.html to contain these placeholder markers:
