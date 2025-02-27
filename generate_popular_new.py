@@ -70,13 +70,29 @@ def generate_popular_html():
     except KeyError as e:
         print(f"Error reading DATA_FILE: {e}")
 
-    # Sort top_50_brands by Popular-Rating (descending) then TotalQtyOnHand (descending)
-    sorted_brands = sorted(top_50_brands.items(),
-                             key=lambda item: (item[1].get('Popular-Rating', 0) * -1, item[1]['TotalQtyOnHand']),
-                             reverse=True)
+    # Separate brands with and without Popular-Rating
+    rated_brands = []
+    non_rated_brands = []
+    for brand_name, brand_data in top_50_brands.items():
+        if 'Popular-Rating' in brand_data and brand_data['Popular-Rating'] > 0:  # Add check for positive rating
+            rated_brands.append((brand_name, brand_data))
+        else:
+            non_rated_brands.append((brand_name, brand_data))
 
-    # Filter out brands with TotalQtyOnHand less than 100
-    sorted_brands = [(brand_name, brand_data) for brand_name, brand_data in sorted_brands if brand_data['TotalQtyOnHand'] >= 100][:50]
+    # Sort the rated brands by Popular-Rating (ascending)
+    rated_brands = sorted(rated_brands, key=lambda item: item[1]['Popular-Rating'])
+
+    # Sort the non-rated brands by TotalQtyOnHand (descending)  
+    non_rated_brands = sorted(non_rated_brands, key=lambda item: item[1]['TotalQtyOnHand'], reverse=True)
+
+    # First add rated brands (if they meet minimum quantity)
+    sorted_brands = [(brand_name, brand_data) for brand_name, brand_data in rated_brands if brand_data['TotalQtyOnHand'] >= 100]
+    
+    # Then add non-rated brands (if they meet minimum quantity)
+    sorted_brands += [(brand_name, brand_data) for brand_name, brand_data in non_rated_brands if brand_data['TotalQtyOnHand'] >= 100]
+
+    # Limit to top 50
+    sorted_brands = sorted_brands[:50]
 
     html = ['<div class="popular-characters">']
 
