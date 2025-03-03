@@ -1,0 +1,19 @@
+{
+  "brands": [
+    {
+      "brandName": "Example Brand",
+      "url": "https://example.com/brand",
+      "popularRating": 1,
+      "active": true,
+      "logoName": "brand-logo.png",
+      "imageUrl": "https://example.com/images/",
+      "itemCount": 100,
+      "totalQtyOnHand": 500
+    }
+  ],
+  "metadata": {
+    "lastUpdated": "2025-02-25T16:54:04",
+    "totalBrands": 1,
+    "skipBrands": ["brand1", "brand2"]
+  }
+}
