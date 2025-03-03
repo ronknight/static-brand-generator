@@ -163,6 +163,36 @@ def generate_css():
     else:
         print("Dynamic CSS placeholders not found in base.html. Please add them.")
 
+def finalize_sort():
+    brands_file = "brands.html"
+    if not os.path.exists(brands_file):
+        print(f"Error: {brands_file} not found.")
+        return
+
+    with open(brands_file, "r", encoding="utf-8") as f:
+        content = f.read()
+
+    # For each items-container block, find all brand links and sort by visible text
+    container_pattern = r'(<div class="items-container">)(.*?)(</div>)'
+    blocks = re.findall(container_pattern, content, flags=re.DOTALL)
+
+    for container_open, container_content, container_close in blocks:
+        link_pattern = r'(<a[^>]+class="[^"]*item[^"]*"[^>]*>)(.*?)(</a>)'
+        matches = re.findall(link_pattern, container_content, flags=re.DOTALL)
+
+        sorted_matches = sorted(matches, key=lambda x: x[1].strip().lower())
+        sorted_container = "".join(f"{m[0]}{m[1]}{m[2]}" for m in sorted_matches)
+
+        new_block = f"{container_open}{sorted_container}{container_close}"
+        content = content.replace(
+            f"{container_open}{container_content}{container_close}",
+            new_block,
+            1
+        )
+
+    with open(brands_file, "w", encoding="utf-8") as f:
+        f.write(content)
+
 def run_scripts():
     # Ensure required environment variables are set
     required_vars = [
@@ -195,3 +225,4 @@ def run_scripts():
 
 if __name__ == "__main__":
     run_scripts()
+    finalize_sort()
